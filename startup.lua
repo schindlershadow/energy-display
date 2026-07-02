@@ -1,6 +1,16 @@
 local displayName = "RF Controller"
-local energyDetector = peripheral.wrap("energy_detector_1")
-local monitor = peripheral.wrap("monitor_3")
+local energyDetector = peripheral.find("energy_detector")
+while energyDetector == nil do
+    print("energyDetector not found, please connect an energy detector and try again.")
+    sleep(1)
+end
+
+local monitor = peripheral.find("monitor")
+while monitor == nil do
+    print("Monitor not found, please connect a monitor and try again.")
+    monitor = peripheral.find("monitor")
+    sleep(1)
+end
 
 monitor.setTextScale(2)
 monitor.setBackgroundColor(colors.blue)
